@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+// import { useEffect, useState } from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import "./App.css"
+import { EditTodo } from "./components/EditTodo"
+import Todo from "./components/Todo"
+import Todos from "./components/Todos"
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>ToDo List</h1>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Todos />} />
+          <Route path="/:id" element={<Todo />} />
+          <Route path="/:id/edit" element={<EditTodo />} />
+        </Routes>
+      </Router>
     </div>
-  );
+  )
 }
-
-export default App;
